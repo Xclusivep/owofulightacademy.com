@@ -1,0 +1,100 @@
+body {
+    text-align: center;
+    background-image: url("IMG_7280-scaled.jpg");
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+     
+}
+
+.container{
+    text-align: center;
+    width: 100%;
+    padding: 0 0 0;
+    margin: auto;
+}
+
+.form {
+    position: relative;
+    z-index: 1;
+    /*background-color: darkgrey;*/
+    max-width: 360px;
+    margin:0 auto 100px;
+    padding: 50px;
+    text-align: center;
+}
+
+a{
+    background-color: rgba(255, 217, 0, 0.842);
+    text-decoration: none;
+    color: white;
+    padding: 5px 30px;
+    border-radius: 30px;
+}
+
+.logo {
+    width: 50%;
+    height: 20%;
+    margin: 10px 0;
+}
+/* 
+.form input {
+    outline: 1;
+    background: white;
+    width: 100%;
+    border: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+} */
+
+.inputContainer{
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    /* align-items: center;
+    
+    
+    padding: 0;
+    margin: 0; */
+    margin-top: 10px;
+    margin-bottom: 4px;
+}
+
+.icon{
+    width: 10%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.icon img{
+    width: 90%;
+    height: 70%;
+    padding: 0;
+    margin: 0;
+}
+
+ .inputBox{
+   width: 90%;
+    border: 0px solid red;
+} 
+
+.inputBox input{
+    width: 100%;
+    height: 100%;
+    font-size:100%;
+} 
+
+
+.form button {
+    outline: 0;
+    background: blue;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 10px;
+}

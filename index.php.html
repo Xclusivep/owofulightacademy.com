@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="logo.jpg" rel="icon" type="image/jpg">
+    <title>HOME</title>
+</head>
+<style>
+    body{
+    padding: 0 4% 0 4%;
+    /* background-color: skyblue; */
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+
+.galleryContainer{
+        width: 100%;
+        height: 600px;
+        /* max-width: 1000px; */
+        user-select: none;
+        box-shadow: 0px 0px 3px 1px #00000078;
+        padding: 10px;
+        box-sizing: border-box;
+        margin: 0 auto;
+    }
+
+     .galleryContainer .slideShowContainer{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: gainsboro;
+        position: relative;
+    }
+
+    .galleryContainer .slideShowContainer .imageHolder{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+         opacity: 0; 
+    }
+    .galleryContainer .slideShowContainer .imageHolder img{
+    width: 100%;
+    height: 100%;
+    }
+
+    .galleryContainer .slideShowContainer .imageHolder .captionText{
+        display: none;
+    } 
+
+    .galleryContainer .slideShowContainer .leftArrow, .galleryContainer .slideShowContainer .rightArrow{
+    width: 50px;
+    background: #00000036;
+    position: absolute;
+    left: 0;
+    z-index: 1; 
+    transition: background 0.5s;
+    height: 72px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    }
+
+    .galleryContainer .slideShowContainer .rightArrow{
+    left: auto;
+    right: 0;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    }
+
+    .galleryContainer .slideShowContainer .leftArrow:hover, .galleryContainer .slideShowContainer .rightArrow:hover{
+        background: #000000a8;
+        cursor: pointer;
+    }
+
+    .galleryContainer .slideShowContainer .arrow{
+        font-size:50px;
+        color:red;
+        font-weight:bold;
+    /* display: inline-block;
+    border: 3px solid white;
+    width: 10px;
+    height: 10px;
+    border-left: none;
+    border-bottom: none;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0; */
+    }
+
+    
+.galleryContainer .slideShowContainer>.captionHolder{
+    position: absolute;
+    bottom: 50px;
+    z-index: 51;
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    /* background: #00000047; */
+    height: 80px;
+    line-height: 50px;
+    overflow: hidden;
+}
+
+.galleryContainer .slideShowContainer>.captionHolder>.captionText{
+    margin: 0;
+}
+
+.galleryContainer .slideShowContainer #playPause{
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    z-index: 1;
+    cursor: pointer; 
+    background-image: url(slides/images.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+.galleryContainer #dotsContainer{
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    padding-top: 20px;
+    box-sizing: border-box;
+}
+.galleryContainer #dotsContainer .dots{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-left: 10px; 
+    background-color: #bbb;
+    cursor: pointer;
+    transition: background-color 0.5s;
+}
+.galleryContainer #dotsContainer .dots:hover, .galleryContainer #dotsContainer .dots.active{
+    background-color: red;
+}
+
+.galleryContainer #dotsContainer .dots:first-child{
+    margin-left: 0;
+}
+
+.galleryContainer .moveLeftCurrentSlide{
+    animation-name: moveLeftCurrent;
+    animation-duration: .05s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+.galleryContainer .moveLeftNextSlide{
+    animation-name: moveLeftNext;
+    animation-duration: .05s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes moveLeftCurrent{
+    from{
+        margin-left: 0;
+        opacity: 1;
+    }
+   to{
+        margin-left: 100%;
+        opacity: 1;
+    }
+}
+
+
+@keyframes moveLeftNext{
+    from{
+        margin-left: 100%;
+        opacity: 1;
+    }
+   to{
+        margin-left: 0;
+        opacity: 1;
+    }
+}
+
+.galleryContainer .moveRightCurrentSlide{
+    animation-name: moveRightCurrent;
+    animation-duration: .05s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes moveRightCurrent{
+    from{
+        margin-left: 0;
+        opacity: 1;
+    }
+   to{
+        margin-left: 100%;
+        opacity: 1;
+    }
+}
+
+
+
+.galleryContainer .moveRightNextSlide{
+    animation-name: moveRightNext;
+    animation-duration: .05s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes moveRightNext{
+    from{
+        margin-left: -100%;
+        opacity: 1;
+    }
+   to{
+        margin-left: 0;
+        opacity: 1;
+    }
+}
+/*  */
+.slideTextFromBotton{
+    animation-name: slideTextFromBotton;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes slideTextFromBotton{
+    from{
+        opacity: 0;
+        margin-top: 100px;
+    }
+    to{
+        opacity: 1;
+        margin-top: 0;
+    }
+}
+
+.slideTextFromTop{
+    animation-name: slideTextFromTop;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes slideTextFromTop{
+    from{
+        opacity: 0;
+        margin-top: -100px;
+    }
+    to{
+        opacity: 1;
+        margin-top: 0;
+    }
+}
+
+.midleRow{
+    /* background:white; */
+    margin-top:50px;
+}
+.row{
+    display: flex;
+    align-items: top;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    }
+    .col-3{
+        flex-basis: 30%;
+        min-width: 300px;
+    }
+
+</style>
+<body>
+<!-- <marquee>fsfgsdgdf <maquee>  -->
+<!--include school name and menu-->
+
+ <!-- <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"> -->
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">    
+    
+
+    <!-- advanced interaction controls to your HTML tables==> https://www.datatables.net -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"> </script>
+    
+<style>
+    #nameText{
+        color: navy;
+
+text-shadow: -1px 1px 0 #41ba45,
+	1px 1px 0 #c63d2b,
+	1px -1px 0 #42afac,
+	-1px -1px 0 #c6c23f;
+    }
+
+    @media only screen and (max-width: 1200px){
+        #nameText{
+            font-size:15px;
+        }
+    }
+</style>
+
+<div id="nameBar" style="width:95%; height:2%; margin:0 auto; padding:0;">
+    <table style="width:100%; height:100%; margin:0 auto; padding:0;">
+        <tbody>
+            <tr>
+                <td style="width:20px; height:50px;"><a href="index.php.html"><img src="logo.jpg" alt="logo" width="100%" height="100%" style="margin:0 auto; padding:0;"></a></td>
+                <td style="text-align:center; width:90%;">
+                    <h1 id="nameText" style="width:100%; height:100%; margin:0 auto; padding:0;">   
+                        OWOFU LIGHT ACADEMY
+                    </h1>
+                </td>
+            </tr>
+        </tbody>
+    </table> 
+</div> 
+<style>
+.narvbar{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+nav{
+    flex: 1;
+    text-align: left;
+}
+
+nav ul {
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 5px; 
+}
+a{
+    text-decoration: none;
+    color: #555;
+}
+
+#burgerMenu {
+    visibility: hidden;
+  }
+  
+  #mainContent{
+      background-color: white;
+  }
+  nav ul li ul {
+    display: none;
+    position: absolute;
+    padding-left:0px;
+    background:skyblue;
+    z-index:100;
+}
+
+nav ul li:hover ul {
+    display: block;
+    position: absolute;
+    padding-left:0px;
+    background:skyblue;
+}
+
+nav ul li ul li a:hover {
+  background-color:white;
+}
+
+@media only screen and (max-width: 1200px){
+    
+    #menuContainer{
+        visibility: hidden;
+        overflow-y: scroll;
+    }
+
+    nav{
+        overflow-y: scroll;
+    }
+
+    nav ul{
+        position: absolute;
+        top: 100px;
+        left: 0;
+        background: #333;
+        width: 100%;
+        overflow: hidden; 
+       transition: max-height 0.5s;
+       z-index: 11; 
+    }
+    nav ul li{
+        display: block;
+        margin-right: 50px;
+         margin-top: 10px;
+         margin-bottom: 10px;
+         z-index: 1;
+    }
+    nav ul li a{
+        color: #fff;
+    }
+
+       
+    #burgerMenu {
+        visibility: visible;
+      }
+      /*subMenu*/
+    nav ul li:hover ul {
+    display: block;
+    position: relative;
+    top:0;
+    left:20px;
+    font-size:20px;
+    }
+}
+
+
+</style>
+ <div class="narvbar" style="width:80%; height:2%; margin:0 auto; padding:0;">
+    <h2 id="burgerMenu" onclick="menutoggle()" style="height:2%; margin:0 0 0 0; padding:0 0 0 0; "><span class="ti-menu"></span></h2>
+    <div id="menuContainer" >
+        <nav>
+            <ul id="MenuItems">
+                <li><a href="index.php.html">HOME</a></li>
+                <li><a href="aboutus/aboutus.php.html">ABOUT US</a></li>
+                <li><a href="https://owofulightacademy.com/contactus/contactus.php">CONTACT US</a></li>
+                <li><a href="news-event/news-event.php.html">NEWS/EVENTS</a></li>
+                <li><a href="picturegallery/picturegallery.php.html">PICTURE GALLERY</a></li>
+                <li><a href="admission/admission.php.html">ADMISSION</a></li>
+                <li><a >LOGIN<span class="ti-angle-down"></span></a>
+                    <ul>  
+                        <li><a href="students.html">STUDENT</a></span></li><br>
+                        <li><a href="login.html">STAFF</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div> 
+
+<script>
+var x = document.getElementById('MenuItems');
+function menutoggle() {
+  if (x.style.visibility === 'hidden') {
+    x.style.visibility = 'visible';
+  } else {
+    x.style.visibility = 'hidden';
+  }
+ 
+}
+</script>
+
+<main><!--this main closes at footer--> 
+
+       <div id="mainContent"><!--this div closes at footer-->
+           <!--Slides starts-->   
+                    <div class="galleryContainer">
+                        <div class="slideShowContainer">
+                            <div id="playPause" onclick="playPauseSlides()"></div>
+                            <div class="leftArrow arrow" onclick="plusSlides(-1)"><</div>
+                            <div class="rightArrow arrow" onclick="plusSlides(1)">></div>
+                            <div class="captionHolder"><p class="captionText">caption Text</p></div>
+                            <div class="imageHolder">
+                                <img src="slides/1.jpg" alt="">
+                                <p class="captionText">SCHOOL</p>
+                            </div>
+                            <div class="imageHolder">
+                                <img src="slides/2.jpg" alt="">
+                                <p class="captionText">CLASSROOM</p>
+                            </div>
+                            <div class="imageHolder">
+                                <img src="slides/3.jpg" alt="">
+                                <p class="captionText">PLAYGROUND</p>
+                            </div>
+                            <div class="imageHolder">
+                                <img src="slides/4.jpg" alt="">
+                                <p class="captionText">APPROACH VIEW</p>
+                            </div>
+                            <div class="imageHolder">
+                                <img src="slides/5.jpg" alt="">
+                                <p class="captionText">COMPUTER LABORATORY </p>
+                            </div>
+                            <div class="imageHolder">
+                                <img src="slides/6.jpg" alt="">
+                                <p class="captionText">CLASSROOM </p>
+                            </div>
+                            <div class="imageHolder">
+                                <img src="slides/7.jpg" alt="">
+                                <p class="captionText">CLASSROOM</p>
+                            </div>
+                            <div class="imageHolder">
+                                <img src="slides/8.jpg" alt="">
+                                <p class="captionText">SCHOOL ENVIRONMENT </p>
+                            </div>
+                            <div class="imageHolder">
+                                <img src="slides/9.jpg" alt="">
+                                <p class="captionText">CLASSROOM</p>
+                            </div>
+                            <div class="imageHolder">
+                                <img src="slides/10.jpg" alt="">
+                                <p class="captionText">A PART OF LIBRARY </p>
+                            </div>
+                            <div class="imageHolder">
+                                <img src="slides/11.jpg" alt="">
+                                <p class="captionText">LOGO</p>
+                            </div>
+                            <div class="imageHolder">
+                                <img src="slides/12.jpg" alt="">
+                                <p class="captionText">CLASSROOM</p>
+                            </div>
+                        </div>
+                        <div id="dotsContainer"></div>
+                    </div> 
+                <!--end of Slides-->   
+
+                <!-- midle Row 
+                    <div class="row midleRow">
+                        <div class="col-3">
+                            <img src="father.jpg" alt="" width="100%" height="100%">
+                        </div>
+                        <div class="col-3">
+                            <img src="admission.jpeg" alt="" width="100%" height="100%">
+                        </div>
+                        <div class="col-3">
+                            <img src="admission.jpeg" alt="" width="100%" height="100%">
+                        </div>
+                    </div>
+                end of midle Row--> 
+      
+                
+
+
+<style>
+    .row{
+    display: flex;
+    align-items: top;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    }
+    .col-4{
+        flex-basis: 20%;
+        min-width: 300px;
+        border-right:1px solid white;
+    }
+    .footer{
+        background:black;
+        margin-top:30px;
+    }
+    h5{
+        color:white;
+        text-align:center;
+        text-decoration: underline;
+        font-size:20px;
+    }
+    p, .row a{
+        color:white;
+    }
+
+    .Longtext{
+        font-size:20px;
+    }
+
+    @media only screen and (max-width: 860px){
+        .row{
+            text-align: center;
+        }
+        .col-4{
+             flex-basis: 90%;
+             border:1px solid white;
+        }
+    }
+</style>
+
+<!--footer-->
+                <div class="row footer">
+                    <div class="col-4">
+                        <h5>MISSION </h5>
+                        <p class="Longtext">
+                        Building you to live a distinctively exceptional life that will illuminate God potentials, academic excellence and good ethics in you, to impact the world in a glorious way
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <h5>VISION</h5>
+                        <p class="Longtext">
+                        To provide impact with good moral, academic excellence through standard, practical teaching in creative and technical skills to become world acclaimed future leaders   
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <h5>CORE VALUE</h5>
+                        <p class="Longtext">
+                        Purity, prudence, perseverance prayers, prevailing, praise and perfection 
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <h5>CONTACT US</h5>
+                        <p><span class="ti-location-pin"></span>&nbsp;&nbsp;NO.18 OCHOBO STREET EUPI OTUKPO, BENUE STATE</p>
+                        <p><span class="ti-mobile"></span>&nbsp;&nbsp;+2348036376914; +2347044442118</p>
+                        <p><span class="ti-email"></span>&nbsp;&nbsp;email@gmail.com</p>
+                        <p><span class="ti-timer"></span>&nbsp;&nbsp;Monday: 9:00 AM - Friday: 3:15 PM</p>
+                    </div>
+                </div>
+<!--end of footer-->
+       
+
+            </div>
+        </main>
+    </body>
+</html>
+<script>
+    var slideIndex, slides, dots, captionText;
+    function initGallery() {
+        slideIndex=0;
+        slides=document.getElementsByClassName('imageHolder');
+        slides[slideIndex].style.opacity=1;
+        captionText=document.querySelector(".captionHolder .captionText");
+        captionText.innerHTML=slides[slideIndex].querySelector(".captionText").innerText;
+
+        dots=[];
+        var dotsContainer=document.getElementById('dotsContainer');
+        for (let i = 0; i < slides.length; i++) {
+            var dot=document.createElement("span");
+            dot.classList.add("dots") ;
+            dot.setAttribute("onClick","moveSlides("+i+")") ;
+            dotsContainer.append(dot);  
+            dots.push(dot);
+        }
+        dots[slideIndex].classList.add("active");
+    }
+    initGallery();
+
+    function plusSlides(n) {
+        moveSlides(slideIndex+n);
+    }
+
+
+    function moveSlides(n) {
+        var i, current, next;
+        var moveSlideAnimClass={
+            forCurrent:"",
+            forNext:""
+        }
+        var slideTextAnimClass;
+        if (n>slideIndex) {
+            if (n>slides) {n=0}
+            if (n==11) {n=0;}
+            moveSlideAnimClass.forCurrent="moveLeftCurrentSlide";
+            moveSlideAnimClass.forNext="moveLeftNextSlide";
+            slideTextAnimClass="slideTextFromBotton";
+        }
+        else if(n<slideIndex){
+            if (n<0) {n=slides.lenght-1}
+            moveSlideAnimClass.forCurrent="moveRightCurrentSlide";
+            moveSlideAnimClass.forNext="moveRightNextSlide";
+        }
+        if (n!=slideIndex) {
+            next=slides[n];
+            current=slides[slideIndex];
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].className="imageHolder"; 
+                slides[i].style.opacity=0; 
+                dots[i].classList.remove("active");             
+            }
+            current.classList.add(moveSlideAnimClass.forCurrent);
+            next.classList.add(moveSlideAnimClass.forNext);
+            dots[n].classList.add("active");
+            slideIndex=n;
+        }
+        captionText.style.display="none";
+        captionText.className="captionText "+slideTextAnimClass;
+        captionText.innerText=slides[n].querySelector(".captionText").innerText;
+        captionText.style.display="block";
+    }
+    var timer=null;
+    function setTimer() {
+        timer=setInterval(function () {
+            plusSlides(1); 
+        }, 3000)
+    }
+
+    setTimer();
+
+    function playPauseSlides() {
+        var playPause=document.getElementById("playPause");
+        if (timer==null) {
+            setTimer();
+            playPause.style.backgroundPositionY="0px";
+        }
+        else{
+            clearInterval(timer);
+            timer=null;
+            playPause.style.backgroundPositionY="-33px";
+        }
+    }
+</script>
+

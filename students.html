@@ -1,0 +1,52 @@
+
+<script>
+	function error() {
+		var userName = document.getElementById('userName').value;
+		var password = document.getElementById('password').value;
+
+		if (userName=="") {
+      var message = document.getElementById('message').innerHTML="Username field is empty";
+			//alert('Fill in value for Username, it is empty');
+			return false;
+		}
+		else if (password=="") {
+      var message = document.getElementById('message').innerHTML="Password field is empty";
+			//alert('Fill in value for Password, it is empty');
+			return false;
+		}
+			
+	}
+  
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student</title>
+  <link href="login/1.png" rel="icon" type="image/png">
+  <link rel="stylesheet" href="login/indexStyle.css">
+</head>
+<body>
+    <div  class="container">
+          <div class="form">
+              <img class="logo" src="logo.jpg" alt=""><br>
+             
+             <label for="" style="color:red" id="message"></label>
+             <form action="https://owofulightacademy.com/students/LoginCode.php" METHOD="POST" onsubmit="return(error())">
+                <div class="inputContainer">
+                  <div class="icon"><img src="login/user.jpg" alt=""></div>
+                  <div class="inputBox"><input type="text" id="password" name="password" placeholder="Student Registration Number"></div>
+                </div>
+                <div class="inputContainer">
+                  <div class="icon"><img src="login/user.jpg" alt=""></div>
+                  <div class="inputBox"><input type="password" id="userName" name="userName" placeholder="Password"></div>
+                </div><br>
+                <button name="signin" >sign in</button>
+             </form>
+          </div>
+    </div>
+</body>
+</html>
